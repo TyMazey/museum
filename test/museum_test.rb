@@ -119,6 +119,28 @@ class MuseumTest < Minitest::Test
     dmns.admit(bob)
 
     assert_equal 5, bob.spending_money
+    assert_equal 15, dmns.revenue
   end
 
+  def test_it_shows_hash_of_patrons_by_exhibit_visited
+  dmns = Museum.new("Denver Museum of Nature and Science")
+  gems_and_minerals = Exhibit.new("Gems and Minerals", 0)
+  dead_sea_scrolls = Exhibit.new("Dead Sea Scrolls", 10)
+  imax = Exhibit.new("IMAX", 15)
+  dmns.add_exhibit(gems_and_minerals)
+  dmns.add_exhibit(dead_sea_scrolls)
+  dmns.add_exhibit(imax)
+  bob = Patron.new("Bob", 20)
+  bob.add_interest("Dead Sea Scrolls")
+  bob.add_interest("IMAX")
+
+  dmns.admit(bob)
+
+  exact = { gems_and_minerals => [],
+    dead_sea_scrolls => [bob],
+    imax => [bob]
+  }
+
+  assert_equal exact, dmns.patrons_of_exhibits
+  end
 end

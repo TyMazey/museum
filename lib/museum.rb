@@ -33,8 +33,7 @@ class Museum
     end
     exhibit_list.reverse.each do |exhibit|
       if patron.spending_money >= exhibit.cost
-      #  binding.pry
-          patron.spending_money -= exhibit.cost
+        patron.spending_money -= exhibit.cost
         @revenue += exhibit.cost
       end
     end
