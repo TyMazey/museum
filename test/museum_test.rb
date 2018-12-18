@@ -45,6 +45,6 @@ class MuseumTest < Minitest::Test
     bob.add_interest("Dead Sea Scrolls")
     bob.add_interest("Gems and Minerals")
 
-    assert_equal [], exhibit.recommend_exhibits(bob)
+    assert_equal [], dmns.recommend_exhibits(bob)
   end
 end
