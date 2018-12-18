@@ -1,7 +1,7 @@
 class Patron
+  attr_accessor :spending_money
 
   attr_reader :name,
-              :spending_money,
               :interest
 
   def initialize(name, money)
